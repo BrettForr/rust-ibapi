@@ -971,6 +971,7 @@ fn parse_connection_time(connection_time: &str) -> (OffsetDateTime, &'static Tz)
     let zones = timezones::find_by_name(parts[2]);
 
     let format = format_description!("[year][month][day] [hour]:[minute]:[second]");
+    println!("Time parts are: {} {} {}", parts[0], parts[1], parts[2]);
     let date = time::PrimitiveDateTime::parse(format!("{} {}", parts[0], parts[1]).as_str(), format).unwrap();
     let timezone = zones[0];
     match date.assume_timezone(timezone) {
