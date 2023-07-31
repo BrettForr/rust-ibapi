@@ -970,9 +970,9 @@ fn parse_connection_time(connection_time: &str) -> (OffsetDateTime, &'static Tz)
 
     let zones = timezones::find_by_name(parts[2]);
 
-    let year = &parts[0][0..3];
-    let month = &parts[0][4..5];
-    let day = &parts[0][6..7];
+    let year = &parts[0][0..4];
+    let month = &parts[0][4..6];
+    let day = &parts[0][6..8];
 
     let format = format_description!("[year] [month] [day] [hour]:[minute]:[second]");
     println!("{} {} {} {}", year, month, day, parts[1]);
