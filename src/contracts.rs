@@ -160,11 +160,16 @@ impl Contract {
     }
 
     /// Creates futures contract from specified symbol
-    pub fn futures(symbol: &str) -> Contract {
+    /// The contract's last trading day or contract month (for Options and Futures).
+    /// Strings with format YYYYMM will be interpreted as the Contract Month whereas YYYYMMDD will be interpreted as Last Trading Day.
+    pub fn futures(symbol: &str, exchange: &str, last_trade_date_or_contract_month: &str) -> Contract {
         Contract {
             symbol: symbol.to_string(),
             security_type: SecurityType::Future,
             currency: "USD".to_string(),
+            exchange: exchange.to_string(),
+            last_trade_date_or_contract_month: last_trade_date_or_contract_month.to_string(),
+            include_expired: true,
             ..Default::default()
         }
     }
