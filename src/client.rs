@@ -107,6 +107,7 @@ impl Client {
                 self.server_version = response_message.next_int()?;
 
                 let time = response_message.next_string()?;
+                println!("Time is: {time}");
                 (self.connection_time, self.time_zone) = parse_connection_time(time.as_str());
             }
             Err(Error::Io(err)) if err.kind() == std::io::ErrorKind::UnexpectedEof => {
